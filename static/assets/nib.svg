@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="145.75233mm"
+   height="82.4823mm"
+   viewBox="0 0 145.75233 82.4823"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="nib.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.54488788"
+     inkscape:cx="216.55831"
+     inkscape:cy="431.28139"
+     inkscape:window-width="1147"
+     inkscape:window-height="1063"
+     inkscape:window-x="0"
+     inkscape:window-y="13"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.053012,-56.60378)">
+    <path
+       id="path1060"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 361.69727,213.93555 -128.66211,74.2832 -87.48047,20 v 123.17773 l 87.48047,20 128.66211,74.28321 C 479.12552,398.68405 525.29153,420.49278 596.42969,390.15625 V 377.45898 H 332.41992 a 36.35368,36.35368 0 0 1 -35.05859,28.17188 36.35368,36.35368 0 0 1 -36.35352,-36.35352 36.35368,36.35368 0 0 1 36.35352,-36.35351 36.35368,36.35368 0 0 1 35.60742,29.23242 H 596.42969 V 349.45898 C 525.29153,319.12249 479.12552,340.93117 361.69727,213.93555 Z"
+       transform="scale(0.26458333)" />
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="rect3710"
+       width="21.166668"
+       height="53.757442"
+       x="12.053012"
+       y="70.966217"
+       ry="4.7688479" />
+  </g>
+</svg>

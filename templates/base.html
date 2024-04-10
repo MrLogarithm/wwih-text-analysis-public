@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Writing Well is Hard</title>
+    
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:300,400,700,800' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Serif+TC:300,400,700,800' rel='stylesheet'>
+
+    <!-- CDN Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- Shepherd.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.0.0/css/shepherd.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.0.0/js/shepherd.min.js"></script>
+
+    <!-- Local Scripts -->
+    <script src="/static/js/savgol.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    
+    {% block head %}
+    {% endblock %}
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '386018');
+    </script>
+    <!-- End MailerLite Universal -->
+  </head>
+  <body>
+    <section class="container">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+          <a href='/'>
+              <img src="/static/assets/logo_wwih_trim.png" alt="Ask Dr. Robot">
+          </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+            <a href='/about' class="navbar-item {% if nav == 'about' %}selected{% endif %}">
+              <span>About</span>
+          </a>
+          <a href='/help' class="navbar-item {% if nav == 'help' %}selected{% endif %}">
+              <span>Help</span>
+          </a>
+          <a href='/feedback' class="navbar-item {% if nav == 'feedback' %}selected{% endif %}">
+              <span>Feedback</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <br class='clearfloat' />
+      {% block content %}
+      {% endblock %}
+    </section>
+    <!--<div id='back-to-top'>
+      <a href='#'>
+        <div id='circle'></div>
+        <p>Back to Top</p>
+      </a>
+    </div>-->
+    <div class="banner">
+        <h2>Writing well is hard. Get help to make it easier.</h2>
+        <img width="140px" src="static/assets/cover.png" style="float:left; margin-right: 20px; box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);"/>
+        <p>
+        Sign up for The Shortlist to receive our <b>free guide to academic editing,</b> which will help you understand the dos and don'ts of clear academic prose. We'll also keep you up-to-date with the latest articles and resources about high-quality, high-impact academic writing.
+        </p>
+        <div style='float:right; position:relative;'>
+            <div class="ml-embedded" data-form="LlRSiI"></div>
+        </div>
+    </div>
+  </body>
+</html>

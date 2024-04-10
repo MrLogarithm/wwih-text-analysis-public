@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id='js-warn'>
+    <div class="column">
+      <div class="card">
+        <div class="card-header-title">
+            JavaScript is not available!
+        </div>
+        <div class="card-content">
+          This page requires JavaScript to run. Please double-check your browser settings and reload the page.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="navbar-border">
+    <div class="welcome">
+      <h1>
+        Writing is hard. Writing well is even harder.
+      </h1>
+      <p class="">
+      Writing Well is Hard is designed to help you understand how your writing compares to the writing of others in your field. Paste a sample of your writing into the textbox labeled <b>Your Text</b>; then, paste a sample text in the box labeled <b>Reference</b>. When you click <b>Analyze</b>, you will be presented with a range of data to help you to identify whether and how the writing patterns in your text correspond to those of your selected reference.
+      </p>
+      <button class='tutorial'>
+          Tutorial
+      </button>
+    </div>
+    </div>
+
+    <div class="colour-key">
+        <button type="button" class="button help-tooltip has-text-weight-bold" data-tooltip-header="Toggle your word categories" data-tooltip-below data-tooltip="To turn a category off, click on it once. To turn it back on, simply click one more time!" style=""><b>i</b></button>
+       <b class="colour-key-label">Colour Key:</b>
+         <div class='colour-key-container'>
+             <span class="nominalization key-nominalization">Nominalizations</span>
+             <button type="button" class="button raised help-tooltip" data-tooltip="Nouns that contain within them shorter verbs, adjectives, or other nouns, which often end in -able, -ation, -ian, -ism, or -ness." data-tooltip-below><b>?</b></button>
+         </div>
+         <div class='colour-key-container'>
+             <span class="preposition key-preposition">Prepositions</span>
+             <button type="button" class="button raised help-tooltip" data-tooltip="Location words (in, on, by, to, from, etc.)" data-tooltip-below><b>?</b></button>
+         </div>
+         <div class='colour-key-container'>
+             <span class="be-verb key-be-verb">&quot;To be&quot; Verbs</span>
+             <button type="button" class="button raised help-tooltip" data-tooltip="Forms of &quot;to be&quot; (is, are, am, was, and were)" data-tooltip-below><b>?</b></button>
+         </div>
+         <div class='colour-key-container'>
+             <span class="aux-pass key-aux-pass">Passive Voice</span>
+             <button type="button" class="button raised help-tooltip" data-tooltip="Constructions such as &quot;was eaten&quot; (vs. the active &quot;ate&quot;)" data-tooltip-below data-tooltip-left><b>?</b></button>
+         </div>
+         <div class='colour-key-container'>
+             <span class="p1-subj key-p1-subj">First Person</span>
+             <button type="button" class="button raised help-tooltip" data-tooltip="Words like &quot;I&quot; or &quot;we&quot; which refer to the author of the text" data-tooltip-below data-tooltip-left><b>?</b></button>
+         </div>
+    </div>
+
+  <form id="main">
+    <div id="input-div">
+      <div class="column-left">
+        <h1 class="subtitle">
+          Your Text
+        </h1>
+        <div class="edit-buttons">
+          <button class='resize' onclick='fontsize(+1);' type='button' id='bigger-user'>+</button><button class='resize' onclick='fontsize(-1);' type='button' id='smaller-user'>-</button><button class='edit-text' type='button' id='edit-user'>Edit</button><button class="clear-text" type='button' id='clear-user'>Clear</button>
+        </div>
+        <textarea id="user-text" rows="10"></textarea>
+        <div id="user-formatted">
+        </div>
+      </div>
+      <div class="column-right">
+        <h1 class="subtitle">
+          Reference
+        </h1>
+        <div class="edit-buttons">
+          <button class='resize' onclick='fontsize(+1);' type='button' id='bigger-ref'>+</button><button class='resize' onclick='fontsize(-1);' type='button' id='smaller-ref'>-</button><button class='edit-text' type='button' id='edit-ref'>Edit</button><button class="clear-text" type='button' id='clear-ref'>Clear</button>
+        </div>
+        <textarea id="reference-text"rows="10"></textarea>
+        <div id="reference-formatted">
+        </div>
+      </div>
+    </div>
+    <br class="clearfloat" />
+
+    <button id="button-submit" type="submit" class="button">
+      <div class='is-loading' id='is-loading'></div>
+      <span id="compare">Analyze</span>
+    </button>
+  </form>
+  
+  <div id="results-div">
+    <div id='summary-div' class='is-hidden'>
+      <div class='accordion'>
+          <h1>Click to Expand Summary</h1>
+      </div>
+      <ul id='tldrs'>
+      </ul>
+    </div>
+    <div id="user-column" class="is-hidden">
+      <div class="table-title">
+        <h1 class="subtitle">
+          Your Statistics
+        </h1>
+      </div>
+      <table id="user-stats">
+      </table>
+
+      <table class="person-table">
+        <thead>
+          <th style="padding: 0;">
+          </th>
+          <th class="has-text-centered table-label">
+              <button type="button" class="button help-tooltip" data-tooltip-above data-tooltip="Who is performing the action in each sentence? Yourself (1st person), the person you are addressing (2nd person), or a third party (3rd person)?"><b>?</b></button>
+            Person
+          </th>
+          <th>
+          </th>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">First</td>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">Second</td>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">Third</td>
+        </tr>
+        <tr>
+          <td id="user-1p-subj-count" class="has-text-centered"></td>
+          <td id="user-2p-subj-count" class="has-text-centered"></td>
+          <td id="user-3p-subj-count" class="has-text-centered"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="reference-column" class="is-hidden">
+      <div class="table-title">
+        <h1 class="subtitle">
+          Reference Statistics
+        </h1>
+      </div>
+      <table id="reference-stats">
+      </table>
+
+      <table class="person-table">
+        <thead>
+          <th style="padding: 0;">
+          </th>
+          <th class="has-text-centered table-label">
+            <button type="button" class="button help-tooltip" data-tooltip-above data-tooltip="Who is performing the action in each sentence? Yourself (1st person), the person you are addressing (2nd person), or a third party (3rd person)?"><b>?</b></button>
+            Person
+          </th>
+          <th>
+          </th>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">First</td>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">Second</td>
+          <td class="has-text-centered table-label" style="padding-top: 17px;">Third</td>
+        </tr>
+        <tr>
+          <td id="reference-1p-subj-count" class="has-text-centered"></td>
+          <td id="reference-2p-subj-count" class="has-text-centered"></td>
+          <td id="reference-3p-subj-count" class="has-text-centered"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br class="clearfloat" />
+
+  <div>
+    <div class="is-hidden has-text-centered" id="graph-warn">
+      <p>
+        <b>TIP:</b> If you enter a longer text (~250 words or more), this section will display graphs containing additional information.
+      </p>
+    </div>
+    <div class="column is-hidden" id="graph-div">
+      <h1>
+        Distribution &amp; Density Graphs
+      </h1>
+      <div style='background: #efefef; padding:1px 20px 20px 20px;'>
+          <h3>
+              Quick Jump
+          </h3>
+          <div class='quickjump'>
+              <a class='p1-subj key-p1-subj' href='#sent-len-hist-label'>Sentence Length Distribution</a>
+              <a class='nominalization key-nominalization' href="#nom-density-graph-label">Nominalization Density</a>
+              <a class='preposition key-preposition' href="#prep-density-graph-label">Preposition Density</a>
+              <a class='be-verb key-be-verb' href="#be-density-graph-label">&quot;To be&quot; Verb Density</a>
+              <a class='aux-pass key-aux-pass' href="#pass-density-graph-label">Passive Voice Density</a>
+          </div>
+      </div>
+      <p>
+        <h1 id='sent-len-hist-label' class='graph-label'>Sentence Length Distribution </h1>
+        Hover the graph to see what proportion of your sentences have a given length. In general, it’s a good idea to keep most of your sentences to <a target="_blank" href="https://shortishard.com/2018/06/25/25-words/">25 words or fewer</a>, with some variation to keep things interesting.
+      </p>
+      <div class="graph" id="sent-len-hist"></div>
+
+      <p>
+        <h1 id='nom-density-graph-label' class='graph-label'>Nominalization Density</h1>
+        Each dot below represents a span of ~15 words; the more <a target="_blank" href="https://shortishard.com/2018/03/28/words-to-watch-for-zombie-nouns/">&quot;zombie nouns&quot;</a> a span contains, the higher its dot will be on the graph.
+        These words are abstractions which can often be replaced by verbs to make your writing clearer.
+        
+        <br/><br/>Look for clusters of dots near the top of the plot, and consider rewording these sections using verbs and shorter or simpler vocabulary.
+        Hover over a dot to see the section of text it represents.
+      </p>
+      <div class="graph" id="nom-density-graph"></div>
+
+      <p>
+        <h1 id='prep-density-graph-label' class='graph-label'>Preposition Density</h1>
+        Each dot below represents a span of ~15 words; the more prepositions a span contains, the higher its dot will be on the graph.
+        
+        <br/><br/>Look for clusters of dots near the top of the plot: these represent sections with many prepositions, which can often be reworded for brevity and clarity.
+        Hover over a dot to see the section of text it represents.
+      </p>
+      <div class="graph" id="prep-density-graph"></div>
+
+      <p>
+        <h1 id='be-density-graph-label' class='graph-label'>Be-Verb Density</h1>
+        Each dot below represents a span of ~15 words; the more &quot;to be&quot; verbs a span contains, the higher its dot will be on the graph.
+
+        <br/><br/>Look for clusters of dots near the top of the plot: these represent sections with many &quot;to be&quot; verbs, and may be reworded for brevity and clarity. Hover over a dot to see the section of text it represents.
+      </p>
+      <div class="graph" id="be-density-graph"></div>
+
+      <p>
+        <h1 id='pass-density-graph-label' class='graph-label'>Passive Voice Density</h1>
+        Each dot below represents a span of ~15 words; the more instances of the passive voice a span contains, the higher its dot will be on the graph. 
+        <a target="_blank" href="https://www.universityaffairs.ca/career-advice/ask-dr-editor/using-the-active-voice-strategically/">Use the active voice</a> to emphasize who is performing an action, and the passive to emphasize the object being acted upon. Hover over a dot to see the section of text it represents.
+      </p>
+      <div class="graph" id="pass-density-graph"></div>
+
+      <!--
+          <p>
+        <h1 class='graph-label has-text-blue'>Sentence Complexity</h1>
+        desc
+      </p>
+      <div class="graph" id="complexity-graph"></div>
+      -->
+    </div>
+  </div>
+  <div id='sidebar-video-container'>
+    <div id='sidebar-video'>
+    </div>
+  </div>
+  <div id='mailer' class='modal'>
+      <img width="140px" src="static/assets/cover.png" style="float:left; margin-right: 20px; box-shadow: 0 0     10px 0px rgba(0,0,0,0.5);"/>
+      <div style='display:inline-block; width: 70%;'>
+          <div class="ml-embedded" data-form="jmmuFZ"></div>
+          <a href='#' rel='modal:close'>
+              <button class='decline' id='modal-close'>
+              I don't need academic writing resources
+              </button>
+          </a>
+      </div>
+      <br style='clear:both;'/>
+
+      <p>
+      <b>The Shortlist</b> is my once-or-twice-monthly email on high-quality, high-impact academic writing. You’ll receive:
+      <ul>
+          <li>
+              notice when new <a href='https://www.universityaffairs.ca/career-advice/ask-dr-editor/'>&quot;Ask Dr. Editor&quot;</a> articles are published
+          </li>
+          <li>
+    details of new materials and resources for refining academic writing
+          </li>
+          <li>
+              links to my favourite writing and editing resources, including the free 13-page resource, <b>Writing Well is Hard: Guide to Interpreting Your Results</b>
+          </li>
+      </ul>
+      </p>
+
+  </div>
+<script type="text/javascript" src="static/js/analysis.js"></script>
+<script src="/static/js/modals.js"></script>
+<script src="/static/js/tour.js"></script>
+{% endblock %}

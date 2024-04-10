@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='center-title'>
+    Feedback
+</div>
+<div class='funding' style='font-size: 16px;font-family: "Nunito";line-height:14px;'>
+  <form method='post' action='/mail'>
+    <h1>
+        Get in touch
+    </h1>
+    <p>
+    Please share your ideas, suggestions, and concerns about <a href="/"><b class='has-text-blue'>Writing Well is Hard</b></a>.
+    </p>
+    <br/>
+    <table class='feedback'>
+        <tr>
+            <td>
+                <label for='name'>Name*</label>
+            </td>
+            <td>
+                <label for='email'>Email*</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type='text' name='name' required/>
+            </td>
+            <td>
+                <input type='email' name='email' required/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <input type='checkbox' name='consent' style='width:20px; margin-left:-3px;'><label for='consent' style='font-weight:normal;'>I want to subscribe to The Shortlist for more academic writing tips and resources.</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <label for='message'>Message*</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <textarea style='border-radius:0;border:1px solid black;padding:0; margin:0;width:calc(100% - 24px);height:180px;' name='message' required></textarea>
+            </td>
+        </tr>
+    </table>
+    <button type='submit' id='button-submit'>Submit</button>
+  </form>
+</div>
+
+{% endblock %}

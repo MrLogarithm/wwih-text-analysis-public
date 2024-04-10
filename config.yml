@@ -1,0 +1,159 @@
+db:
+  secret_key: ""
+  uri: "sqlite:///db.sqlite"
+
+email:
+  sender: ""
+  recipient: ""
+  server: ""
+  port: 465
+  address: ""
+  password: ""
+  tls: false
+  ssl: true
+  feedback_subject: ""
+
+domains:
+  allow: 
+    - http://localhost:5000
+    - https://localhost:5000
+
+tldr:
+  sent_len_warning_threshold: 5
+  z_threshold: 1.5
+data:
+  formatting_tooltips:
+    aux-pass: "Passive Voice"
+    be-verb: "&quot;To be&quot; Verb"
+    p1-subj: "First Person"
+    nominalization: "Nominalization"
+    preposition: "Preposition"
+
+  density:
+    method: fixed-size
+    window_size: 15
+    n_windows: 100
+
+  hist:
+    bin_size: 5
+
+  verb-count:
+    display: False
+  clausal-subj-count:
+    display: False
+  len-variance:
+    display: False
+  be-verb-percent-total:
+    display: False
+  be-verb-percent-verbs:
+    display: False
+  passive-percent:
+    display: False
+
+  longest-sent-id:
+    display: raw
+
+  char-count:
+    display: table
+    label: "Character Count"
+    tooltip: "Total number of characters (including whitespace)."
+  punc-count:
+    display: False
+  word-count:
+    display: table
+    label: "Word Count"
+    tooltip: "Total number of words in this sample of text."
+    order: 0
+  avg-length:
+    display: table
+    do_round: True
+    round_places: 1
+    label: "Average Sentence Length"
+    text_after: "words"
+    tooltip: "Average number of words per sentence."
+    order: 1
+  max-length:
+    display: table
+    label: "Max. Sentence Length"
+    text_after: "words"
+    tooltip: "Number of words in the longest sentence. Click the number to highlight this sentence above."
+    order: 2
+  len-stdev:
+    display: table
+    label: "Sentence Length Variation"
+    tooltip: "The larger the number, the more varied are the lengths of your sentences."
+    do_round: True
+    round_places: 1
+    order: 2.5
+  be-count:
+    display: table
+    label: "&quot;To be&quot; Verbs"
+    percent_of: verb-count
+    percent_explanation: "verbs"
+    tooltip: "Forms of &quot;to be&quot; (is, are, am, was, and were)"
+    order: 5.5
+  nominalization-count:
+    display: table
+    label: "Nominalizations"
+    percent_of: word-count
+    percent_explanation: "words"
+    tooltip: "Nouns that contain within them shorter verbs, adjectives, or other nouns, which often end in -able, -ation, -ian, -ism, or -ness."
+    order: 4
+  prep-count:
+    display: table
+    label: "Prepositions"
+    percent_of: word-count
+    percent_explanation: "words"
+    tooltip: "Location words (in, on, by, to, from, etc.)"
+    order: 5
+  passive-count:
+    display: table
+    label: "Passive Voice"
+    percent_of: verb-count
+    percent_explanation: "verbs"
+    tooltip: "Constructions such as &quot;was eaten&quot; (vs. the active &quot;ate&quot;)"
+    order: 6
+
+  1p-subj-count:
+    display: id
+    percent_of: subj-count
+    percent_explanation: "sentences"
+    id: "1p-subj-count"
+  2p-subj-count:
+    display: id
+    percent_of: subj-count
+    percent_explanation: "sentences"
+    id: "2p-subj-count"
+  3p-subj-count:
+    display: id
+    percent_of: subj-count
+    percent_explanation: "sentences"
+    id: "3p-subj-count"
+  subj-count:
+    display: false
+
+  sent-lens:
+    display: plot
+    div: "sent-len-hist"
+    plot_type: histogram
+  prep-density:
+    display: plot
+    div: "prep-density-graph"
+    plot_type: line
+  be-density:
+    display: plot
+    div: "be-density-graph"
+    plot_type: line
+  pass-density:
+    display: plot
+    div: "pass-density-graph"
+    plot_type: line
+  nom-density:
+    display: plot
+    div: "nom-density-graph"
+    plot_type: line
+  complexity:
+    display: none
+    div: "complexity-graph"
+    plot_type: scatter
+    smooth: false

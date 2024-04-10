@@ -3,7 +3,7 @@
 1. Install dependencies
 
 ```
-pip install -r requirements.txt
+pip install spacy statsmodels flask flask_mail pyyaml
 ```
 
 2. Download SpaCy models
@@ -15,7 +15,7 @@ python -m spacy download en_core_web_sm
 3. Launch flask
 
 ```
-./serve.sh
+python -m flask --app main.py run
 ```
 
 You can now access the interface from your web browser. By default, it is served to `http://localhost:5000`.

@@ -1,8 +1,3 @@
-# To-do:
-
-Clean local venv and freeze pip requirements.
-
-
 # Setup
 
 1. Install dependencies
